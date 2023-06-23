@@ -3,12 +3,20 @@
 $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
 
 <#
-Date: 23/08/2023
-
+.NOTES
+===========================================================================
+Version      : 1
+Date: 23/06/2023
+Organization : Guilhem SCHLOSSER
 Auteur: Guilhem SCHLOSSER
+Nom de l'outil: Export_ADGroupMember
 
-Usage: Exporter les membres d'un groupe défini
+===========================================================================
+.DESCRIPTION
+Usage: Exporter les membres d'un groupe défini depuis un contrôleur de domaine
+Prérequis: Ne nécessite pas de module
 
+.EXPLICATION
 Explication: Les membres peuvent également être d’autres groupes ou objets ordinateur, pas seulement des utilisateurs
 #>
 
