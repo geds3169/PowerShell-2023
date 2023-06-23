@@ -30,12 +30,27 @@ L'authentification MFA nécessite possiblement une mise à jour du module Exchan
 #>
 
 # ===========================================================================
-
-# Variables
-$OrganizationName = Read-Host "Veuillez entrer le tenant (exmple: XXXXXXXXXX.onmicrosoft.com) "
-
-# ===========================================================================
 # Fonctions
+
+# Installation de module
+function InstallModule {
+    # Vérifie si le module requis Exchange est déjà installé, sinon on l'installe
+    $requiredModule = "ExchangeOnlineManagement"  # Remplacez "NomDuModule" par le nom réel du module requis
+    if (-not (Get-Module -Name $requiredModule -ListAvailable)) {
+        Write-Host "Le module $requiredModule n'est pas installé. Tentative d'installation..." -ForegroundColor Cyan
+        try {
+            Install-Module -Name $requiredModule -Force -Scope CurrentUser
+            Write-Host "Le module $requiredModule a été installé avec succès." -ForegroundColor Green
+        }
+        catch {
+            Write-Host "Impossible d'installer le module $requiredModule. Veuillez l'installer manuellement." -ForegroundColor Red
+            exit
+        }
+    }
+    else {
+        Import-Module -Name $requiredModule
+    }
+}
 
 # Authentification de l'utilisateur
 function ExchangeConnect {
@@ -109,23 +124,8 @@ function createGroupDistribution {
 # Script
 # Appel des différentes fonctions et installation préalable des modules requis
 
-# Vérifier si le module requis Exchange est déjà installé, sinon on l'installe
-$requiredModule = "ExchangeOnlineManagement"  # Remplacez "NomDuModule" par le nom réel du module requis
-if (-not (Get-Module -Name $requiredModule -ListAvailable)) {
-    Write-Host "Le module $requiredModule n'est pas installé. Tentative d'installation..." -ForegroundColor Cyan
-    try {
-        Install-Module -Name $requiredModule -Force -Scope CurrentUser
-        Write-Host "Le module $requiredModule a été installé avec succès." -ForegroundColor Green
-    }
-    catch {
-        Write-Host "Impossible d'installer le module $requiredModule. Veuillez l'installer manuellement." -ForegroundColor Red
-        exit
-    }
-}
-else {
-    Import-Module -Name $requiredModule
-}
-
+InstallModule
+$OrganizationName = Read-Host "Veuillez entrer le tenant (exmple: XXXXXXXXXX.onmicrosoft.com) "
 ExchangeConnect
 createGroupDistribution
 Disconnect-ExchangeOnline -Confirm:$false # Ferme la session à ExchangeOnline
