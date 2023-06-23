@@ -9,7 +9,7 @@ Version      : 2
 Date         : 23/06/2023
 Organization : Guilhem SCHLOSSER
 Auteur       : Guilhem SCHLOSSER
-Nom de l'outil: Manage_Group_Distribution_Office365
+Nom de l'outil: Manage_Static_Group_Distribution_Office365
 ===========================================================================
 .DESCRIPTION
 Usage: Gestion des groupes de distribution par PowerShell sous Office 365
