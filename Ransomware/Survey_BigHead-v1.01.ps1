@@ -59,6 +59,9 @@ $action = {
         Write-Host "Attention, un processus lié au ransomware (Big Head) a été détecté et n'a pu être tué : $process" -ForegroundColor Red
         Write-Host "Erreur : $_" -ForegroundColor Red
     }
+
+    # Nettoyage de la mémoire sur les objets utilisées de(s) processus (libérer des ressources externes (telles que des descripteurs de fichiers, des ports TCP, des connexions à des bases de données, etc.).
+    $process | ForEach-Object { $_.Dispose() }
     
     # Supprimer le blocage de sécurité des fichiers et les supprimer
     try {
