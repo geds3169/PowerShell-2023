@@ -2,6 +2,7 @@
 Auteur: Guilhem SCHLOSSER
 Date: 10/07/2023
 Nom du script: Survey_BigHead.ps1
+Version: 1.00
 Source: https://www.it-connect.fr/le-ransomware-big-head-se-fait-passer-pour-une-mise-a-jour-windows/
 Test: non testé en production ou condition réelle
 
@@ -21,7 +22,7 @@ Utilisation:
         - Cocher uniquement "Activée".
     Onglet Action:
         - Action = "Démarrer un programme".
-        - Renseigner le chemin d'exécutable PowerShell = -File C:\Script\BigHead.ps1 ou \\Server_Name\Shared_Folder\BigHead.ps1.
+        - Renseigner le chemin d'exécutable PowerShell = -File C:\Script\Survey_BigHead.ps1 ou \\Server_Name\Shared_Folder\Survey_BigHead.ps1.
     Onglet Conditions par défaut.
     Onglet Settings:
         - Cocher "Permettre l'exécution d'une tâche à la demande / arrêter la tâche si elle dure plus longtemps que X / Si la tâche d'exécution ne s'arrête pas à la demande, la forcer à s'arrêter".
